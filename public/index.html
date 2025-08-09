@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Program Request</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📋 Request a Health Program</h1>
+
+    <div id="errorBox" class="hidden"></div>
+
+    <form id="requestForm" method="POST" action="/request-program">
+      <label for="programName">Program Name</label>
+      <input type="text" name="programName" id="programName" required>
+
+      <label for="requestedBy">Requested By</label>
+      <input type="text" name="requestedBy" id="requestedBy" required>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

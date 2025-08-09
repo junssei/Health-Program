@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Request Program</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Barangay Request Form</h1>
+  <form id="requestForm" action="/submit-request" method="POST">
+    <label for="barangay">Barangay:</label>
+    <input type="text" id="barangay" name="barangay" required>
+
+    <label for="program">Program:</label>
+    <select id="program" name="program" required>
+      <option value="">-- Select Program --</option>
+      <option value="Free Vaccination">Free Vaccination</option>
+      <option value="Blood Donation Drive">Blood Donation Drive</option>
+    </select>
+
+    <button type="submit" class="btn">Submit Request</button>
+    <p id="error" class="error"></p>
+  </form>
+
+  <script>
+    document.getElementById('requestForm').addEventListener('submit', function(e) {
+      const barangay = document.getElementById('barangay').value;
+      const program = document.getElementById('program').value;
+      const error = document.getElementById('error');
+
+      if (!barangay || !program) {
+        e.preventDefault();
+        error.textContent = "Please fill in all fields!";
+      }
+    });
+  </script>
+</body>
+</html>
