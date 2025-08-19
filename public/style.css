@@ -6,6 +6,12 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  overflow: hidden;
+}
+
+/* add breathing room at top for admin and small screens */
+@media (min-width: 700px) {
+  body { padding-top: 12px; }
 }
 
 .container {
@@ -14,6 +20,88 @@ body {
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 400px;
+}
+
+.admin-container {
+  width: 800px;
+  /* place admin container at the top of the page instead of vertically centering */
+  align-self: flex-start;
+  margin-top: 24px;
+  box-sizing: border-box;
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding-bottom: 24px; /* ensure space at bottom when scrolling */
+}
+
+.requestItem {
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+.requestItem .desc {
+  margin-top: 6px;
+  color: #444;
+  background: #fafafa;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.log-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+  /* allow controls to expand equally */
+}
+
+.admin-btn {
+  background: #007ACC;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-btn:hover { background: #005fa3; }
+
+/* Ensure select matches button height */
+.log-controls select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Force select and buttons in the controls to have the same size */
+.log-controls > * {
+  box-sizing: border-box;
+  flex: 1 1 0; /* equal widths */
+  height: 40px;
+}
+
+.log-controls select { /* ensure text vertically centers */
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+/* log output styling */
+.log-output {
+  max-height: 400px;
+  overflow: auto;
+  background: #f7f7f7;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 12px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #eee;
 }
 
 h1 {
@@ -38,6 +126,16 @@ input {
   font-size: 1rem;
 }
 
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 2px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
 button {
   width: 100%;
   margin-top: 20px;
@@ -53,6 +151,15 @@ button {
 button:hover {
   background: #005fa3;
 }
+
+.admin-link {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  color: #007ACC;
+  text-decoration: none;
+}
+.admin-link:hover { text-decoration: underline; }
 
 /* Error box styles */
 #errorBox {

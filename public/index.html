@@ -12,14 +12,18 @@
     <div id="errorBox" class="hidden"></div>
 
     <form id="requestForm" method="POST" action="/request-program">
-      <label for="programName">Program Name</label>
-      <input type="text" name="programName" id="programName" required>
+  <label for="programName">Program Name</label>
+  <input type="text" name="programName" id="programName" required>
 
-      <label for="requestedBy">Requested By</label>
-      <input type="text" name="requestedBy" id="requestedBy" required>
+  <label for="programDescription">Program Description</label>
+  <textarea name="programDescription" id="programDescription" rows="4" placeholder="Short description (optional)"></textarea>
 
-      <button type="submit">Submit Request</button>
+  <label for="requestedBy">Requested By</label>
+  <input type="text" name="requestedBy" id="requestedBy" required>
+
+  <button type="submit">Submit Request</button>
     </form>
+  <a class="admin-link" href="/admin.html">Go to Admin Dashboard</a>
   </div>
 
   <script src="script.js"></script>

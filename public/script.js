@@ -3,6 +3,7 @@ const errorBox = document.getElementById('errorBox');
 
 form.addEventListener('submit', function (e) {
   const programName = form.programName.value.trim();
+  const programDescription = (form.programDescription && form.programDescription.value || '').trim();
   const requestedBy = form.requestedBy.value.trim();
 
   if (!programName || !requestedBy) {

@@ -9,7 +9,41 @@
   <div class="container">
     <h1>✅ Request Submitted</h1>
     <p>Your health program request has been successfully received.</p>
+    <p id="requestId"></p>
+    <p id="approvalStatus">Checking approval status...</p>
     <a href="/" style="display: block; text-align: center; margin-top: 20px;">⬅️ Go back to form</a>
+    <a class="admin-link" href="/admin.html">🔐 Go to Admin Dashboard</a>
   </div>
+  <script>
+    (function(){
+      function qs(name){
+        const params = new URLSearchParams(location.search);
+        return params.get(name);
+      }
+      const id = qs('id');
+      const idEl = document.getElementById('requestId');
+      const statusEl = document.getElementById('approvalStatus');
+      if (!id) { idEl.textContent = ''; statusEl.textContent = ''; return; }
+      idEl.textContent = 'Request ID: ' + id;
+
+      async function check(){
+        try {
+          const res = await fetch('/api/requests/' + encodeURIComponent(id));
+          if (!res.ok) throw new Error('not found');
+          const j = await res.json();
+          if (j.approved) {
+            statusEl.textContent = '✅ Approved by ' + (j.approvedBy||'admin') + ' at ' + (j.approvedAt||'');
+            return;
+          } else {
+            statusEl.textContent = '⏳ Waiting for approval...';
+          }
+        } catch (e) {
+          statusEl.textContent = 'Error checking status';
+        }
+        setTimeout(check, 5000);
+      }
+      check();
+    })();
+  </script>
 </body>
 </html>

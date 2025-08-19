@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Health Program Requests</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container admin-container">
+    <h1>🔐 Admin Dashboard</h1>
+    <a class="admin-link" href="/">➕ New Request</a>
+
+    <section>
+      <h2>Recent Requests</h2>
+      <div id="requests"></div>
+    </section>
+
+    <section>
+      <h2>Logs</h2>
+      <label for="logType">Log type:</label>
+      <div class="log-controls">
+        <select id="logType">
+          <option value="requests">Requests</option>
+          <option value="access">Access</option>
+          <option value="notifications">Notifications</option>
+        </select>
+        <button id="loadLog" class="admin-btn">Load Log</button>
+      </div>
+  <pre id="logOutput" class="log-output"></pre>
+    </section>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
